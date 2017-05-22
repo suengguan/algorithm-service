@@ -20,11 +20,15 @@ const (
 func Test_Create(t *testing.T) {
 	// create admin
 	daoApi.UserDaoApi.Init("http://user-dao-service:8080")
+	daoApi.ResourceDaoApi.Init("http://resource-dao-service:8080")
 	var admin model.User
 	var resource model.Resource
+	resource.Id = 0
+	admin.Id = 0
 	admin.Name = "admin"
 	admin.Resource = &resource
 	daoApi.UserDaoApi.Create(&admin)
+	daoApi.ResourceDaoApi.Create(&resource)
 
 	// create image
 	var algorithm model.Algorithm
