@@ -25,7 +25,7 @@ func Test_Create(t *testing.T) {
 	var resource model.Resource
 	admin.Name = "admin"
 	admin.Resource = &resource
-	daoApi.UserDaoApi.Create(admin)
+	daoApi.UserDaoApi.Create(&admin)
 
 	// create image
 	var algorithm model.Algorithm
