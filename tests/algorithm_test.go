@@ -7,7 +7,9 @@ import (
 	"net/http"
 	"testing"
 
+	daoApi "api/dao_service"
 	_ "app-service/algorithm-service/routers"
+	"github.com/astaxie/beego"
 	"model"
 )
 
@@ -16,6 +18,16 @@ const (
 )
 
 func Test_Create(t *testing.T) {
+	// create admin
+	var cfg beego.AppConfig
+	daoApi.UserDaoApi.Init(cfg.String("UserDaoService"))
+	var admin model.User
+	var resource model.Resource
+	admin.Name = "admin"
+	admin.Resource = &resource
+	daoApi.UserDaoApi.Create(user)
+
+	// create image
 	var algorithm model.Algorithm
 	algorithm.Id = 0
 	algorithm.Name = "algorithm"
