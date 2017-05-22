@@ -19,13 +19,13 @@ const (
 
 func Test_Create(t *testing.T) {
 	// create admin
-	var cfg beego.AppConfig
+	var cfg = beego.AppConfig
 	daoApi.UserDaoApi.Init(cfg.String("UserDaoService"))
 	var admin model.User
 	var resource model.Resource
 	admin.Name = "admin"
 	admin.Resource = &resource
-	daoApi.UserDaoApi.Create(user)
+	daoApi.UserDaoApi.Create(admin)
 
 	// create image
 	var algorithm model.Algorithm
