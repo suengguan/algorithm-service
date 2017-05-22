@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	base_url = "http://localhost:9001/v1/algorithm"
+	base_url = "http://localhost:8080/v1/algorithm"
 )
 
 func Test_Create(t *testing.T) {
