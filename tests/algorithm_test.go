@@ -27,8 +27,19 @@ func Test_Create(t *testing.T) {
 	admin.Id = 0
 	admin.Name = "admin"
 	admin.Resource = &resource
-	daoApi.UserDaoApi.Create(&admin)
-	daoApi.ResourceDaoApi.Create(&resource)
+	newAdmin, err := daoApi.UserDaoApi.Create(&admin)
+	if err != nil {
+		t.Log(err)
+		return
+	}
+	t.Log("admin:", *newAdmin)
+	resource.User = newAdmin
+	newResource, err := daoApi.ResourceDaoApi.Create(&resource)
+	if err != nil {
+		t.Log(err)
+		return
+	}
+	t.Log("resource:", *newResource)
 
 	// create image
 	var algorithm model.Algorithm
